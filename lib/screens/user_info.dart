@@ -1,5 +1,9 @@
 import 'package:ECommerceApp/consts/colors.dart';
+import 'package:ECommerceApp/consts/my_icons.dart';
 import 'package:ECommerceApp/provider/dark_theme_provider.dart';
+import 'package:ECommerceApp/screens/cart.dart';
+import 'package:ECommerceApp/screens/wishlist.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -11,18 +15,18 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
-  bool _value = false;
   ScrollController _scrollController;
   var top = 0.0;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
-  
     super.initState();
-    _scrollController =ScrollController();
-    _scrollController.addListener(() {setState(() {
-      
-    });});
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      setState(() {});
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -37,8 +41,8 @@ class _UserInfoState extends State<UserInfo> {
                 elevation: 4,
                 expandedHeight: 200,
                 pinned: true,
-                flexibleSpace: LayoutBuilder(
-                    builder: (BuildContext context, BoxConstraints constraints) {
+                flexibleSpace: LayoutBuilder(builder:
+                    (BuildContext context, BoxConstraints constraints) {
                   top = constraints.biggest.height;
                   return Container(
                     decoration: BoxDecoration(
@@ -115,19 +119,50 @@ class _UserInfoState extends State<UserInfo> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0),
+                        child: userTitle('User Bag')),
+                    Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(WishlistScreen.routeName),
+                          title: Text('Wishlist'),
+                          trailing: Icon(Icons.chevron_right_rounded),
+                          leading: Icon(MyAppIcons.wishlist),
+                        ),
+                      ),
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(CartScreen.routeName);
+                          },
+                          title: Text('Cart'),
+                          trailing: Icon(Icons.chevron_right_rounded),
+                          leading: Icon(MyAppIcons.cart),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
                         child: userTitle('User Information')),
                     Divider(
                       thickness: 1,
                       color: Colors.grey,
                     ),
                     userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Phone number', '4555', 0, context),
-                    userListTile('Shipping address', '', 0, context),
-                    userListTile('joined date', 'date', 0, context),
+                    userListTile('Phone number', '4555', 1, context),
+                    userListTile('Shipping address', '', 2, context),
+                    userListTile('joined date', 'date', 3, context),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: userTitle('User settings'),
@@ -149,7 +184,55 @@ class _UserInfoState extends State<UserInfo> {
                       switchActiveColor: Colors.indigo,
                       title: Text('Dark theme'),
                     ),
-                    userListTile('Logout', '', 4, context),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () async {
+                            // Navigator.canPop(context)? Navigator.pop(context):null;
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext ctx) {
+                                  return AlertDialog(
+                                    title: Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 6.0),
+                                          child: Image.network(
+                                            'https://image.flaticon.com/icons/png/128/1828/1828304.png',
+                                            height: 20,
+                                            width: 20,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text('Sign out'),
+                                        ),
+                                      ],
+                                    ),
+                                    content: Text('Do you wanna Sign out?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () async {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('Cancel')),
+                                      TextButton(
+                                          onPressed: () async {
+                                            await _auth.signOut().then((value) => Navigator.pop(context));
+                                          },
+                                          child: Text('Ok', style: TextStyle(color: Colors.red),))
+                                    ],
+                                  );
+                                });
+                          },
+                          title: Text('Logout'),
+                          leading: Icon(Icons.exit_to_app_rounded),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
@@ -160,9 +243,8 @@ class _UserInfoState extends State<UserInfo> {
       ),
     );
   }
- 
 
- Widget _buildFab() {
+  Widget _buildFab() {
     //starting fab position
     final double defaultTopMargin = 200.0 - 4.0;
     //pixels from top where scaling should start
@@ -187,16 +269,17 @@ class _UserInfoState extends State<UserInfo> {
       }
     }
 
-return  Positioned(
+    return Positioned(
       top: top,
       right: 16.0,
-      child:  Transform(
-        transform:  Matrix4.identity()..scale(scale),
+      child: Transform(
+        transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
-        child:  FloatingActionButton(
+        child: FloatingActionButton(
+          backgroundColor: Colors.purple,
           heroTag: "btn1",
-          onPressed: (){},
-          child:  Icon(Icons.camera_alt_outlined),
+          onPressed: () {},
+          child: Icon(Icons.camera_alt_outlined),
         ),
       ),
     );

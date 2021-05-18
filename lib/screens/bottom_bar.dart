@@ -8,13 +8,14 @@ import 'feeds.dart';
 import 'home.dart';
 
 class BottomBarScreen extends StatefulWidget {
+  static const routeName = '/BottomBarScreen';
   @override
   _BottomBarScreenState createState() => _BottomBarScreenState();
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
   List<Map<String, Object>> _pages;
-  int _selectedPageIndex = 4;
+  int _selectedPageIndex = 0;
 
   @override
   void initState() {
@@ -29,7 +30,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         'page': Search(),
       },
       {
-        'page': Cart(),
+        'page': CartScreen(),
       },
       {
         'page': UserInfo(),
@@ -87,7 +88,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    MyAppIcons.cart,
+                    MyAppIcons.bag,
                   ),
                   title: Text('Cart'),
                 ),
@@ -105,6 +106,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FloatingActionButton(
+          backgroundColor: Colors.purple,
           hoverElevation: 10,
           splashColor: Colors.grey,
           tooltip: 'Search',

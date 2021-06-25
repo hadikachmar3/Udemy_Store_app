@@ -4,10 +4,10 @@ Shop App made by Flutter
 
 ## Get the Udemy course now:
 
+[![Youtube Channel](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png)](https://www.youtube.com/channel/UCTGDYkqUtgCelc6G09LUm6w "Youtube Channel - Click to View!")
+
+
 [![Udemy course](https://www.pipelinersales.com/wp-content/uploads/2019/06/large-udemy.jpg)](https://www.udemy.com/course/flutter-with-firebase-build-an-e-commerce-app-from-scratch/#reviews "Udemy course - Click to View!")
-
-
-
 
 
 ## Mockup
@@ -17,6 +17,4 @@ Shop App made by Flutter
 
 
 
-
-[![Youtube Channel](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png)](https://www.youtube.com/channel/UCTGDYkqUtgCelc6G09LUm6w "Youtube Channel - Click to View!")
 

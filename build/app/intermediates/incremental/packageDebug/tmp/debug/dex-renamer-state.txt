@@ -1,4 +1,13 @@
-#Tue May 18 05:59:00 EEST 2021
-base.0=C\:\\Teach on Udemy\\ECommerceApp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sun Jul 04 04:24:36 EEST 2021
+path.3=classes4.dex
+path.2=classes3.dex
+path.1=classes2.dex
 path.0=classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.3=C\:\\Teach on Udemy\\Shop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes4.dex
+base.2=C\:\\Teach on Udemy\\Shop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes3.dex
+base.1=C\:\\Teach on Udemy\\Shop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes2.dex
+base.0=C\:\\Teach on Udemy\\Shop\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex

@@ -5,7 +5,7 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="29" />
     <!--
          Flutter needs it to communicate with the running application
@@ -13,8 +13,13 @@
     -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+    <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
     <!--
  io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -27,7 +32,8 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="ECommerceApp" >
+        android:label="ECommerceApp"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
             android:name="com.example.ECommerceApp.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -75,10 +81,22 @@
             android:directBootAware="true"
             android:exported="false" >
             <meta-data
+                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
                 android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
@@ -94,6 +112,64 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/flutter_image_picker_file_paths" />
         </provider>
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+        <activity
+            android:name="com.gettipsi.stripe.OpenBrowserActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.gettipsi.stripe.RedirectUriReceiver"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="example" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.stripe.android.view.AddPaymentMethodActivity"
+            android:theme="@style/StripeDefaultTheme" />
+        <activity
+            android:name="com.stripe.android.view.PaymentMethodsActivity"
+            android:theme="@style/StripeDefaultTheme" />
+        <activity
+            android:name="com.stripe.android.view.PaymentFlowActivity"
+            android:theme="@style/StripeDefaultTheme" />
+        <activity
+            android:name="com.stripe.android.view.PaymentAuthWebViewActivity"
+            android:theme="@style/StripeDefaultTheme" />
+        <activity
+            android:name="com.stripe.android.view.PaymentRelayActivity"
+            android:theme="@style/StripeDefaultTheme" />
+        <activity
+            android:name="com.stripe.android.stripe3ds2.views.ChallengeActivity"
+            android:theme="@style/Stripe3DS2Theme" />
+        <activity
+            android:name="com.stripe.android.stripe3ds2.views.ChallengeProgressDialogActivity"
+            android:theme="@style/Stripe3DS2Theme" />
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
 
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
@@ -141,7 +217,10 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </service>
+        </service> <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

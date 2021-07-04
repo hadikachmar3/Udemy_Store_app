@@ -1,13 +1,16 @@
 import 'package:ECommerceApp/consts/colors.dart';
 import 'package:ECommerceApp/consts/my_icons.dart';
 import 'package:ECommerceApp/provider/dark_theme_provider.dart';
-import 'package:ECommerceApp/screens/cart.dart';
-import 'package:ECommerceApp/screens/wishlist.dart';
+import 'package:ECommerceApp/screens/cart/cart.dart';
+import 'package:ECommerceApp/screens/wishlist/wishlist.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:provider/provider.dart';
+
+import 'orders/order.dart';
 
 class UserInfo extends StatefulWidget {
   @override
@@ -18,6 +21,12 @@ class _UserInfoState extends State<UserInfo> {
   ScrollController _scrollController;
   var top = 0.0;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String _uid;
+  String _name;
+  String _email;
+  String _joinedAt;
+  String _userImageUrl;
+  int _phoneNumber;
   @override
   void initState() {
     super.initState();
@@ -25,6 +34,30 @@ class _UserInfoState extends State<UserInfo> {
     _scrollController.addListener(() {
       setState(() {});
     });
+    getData();
+  }
+
+  void getData() async {
+    User user = _auth.currentUser;
+    _uid = user.uid;
+
+    print('user.displayName ${user.displayName}');
+    print('user.photoURL ${user.photoURL}');
+    final DocumentSnapshot userDoc = user.isAnonymous
+        ? null
+        : await FirebaseFirestore.instance.collection('users').doc(_uid).get();
+    if (userDoc == null) {
+      return;
+    } else {
+      setState(() {
+        _name = userDoc.get('name');
+        _email = user.email;
+        _joinedAt = userDoc.get('joinedAt');
+        _phoneNumber = userDoc.get('phoneNumber');
+        _userImageUrl = userDoc.get('imageUrl');
+      });
+    }
+    // print("name $_name");
   }
 
   @override
@@ -84,8 +117,8 @@ class _UserInfoState extends State<UserInfo> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          'https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg'),
+                                      image: NetworkImage(_userImageUrl ??
+                                          'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
                                     ),
                                   ),
                                 ),
@@ -94,7 +127,7 @@ class _UserInfoState extends State<UserInfo> {
                                 ),
                                 Text(
                                   // 'top.toString()',
-                                  'Guest',
+                                  _name == null ? 'Guest' : _name,
                                   style: TextStyle(
                                       fontSize: 20.0, color: Colors.white),
                                 ),
@@ -104,8 +137,8 @@ class _UserInfoState extends State<UserInfo> {
                         ],
                       ),
                       background: Image(
-                        image: NetworkImage(
-                            'https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg'),
+                        image: NetworkImage(_userImageUrl ??
+                            'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -152,6 +185,19 @@ class _UserInfoState extends State<UserInfo> {
                         ),
                       ),
                     ),
+                     Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(OrderScreen.routeName),
+                          title: Text('My Orders'),
+                          trailing: Icon(Icons.chevron_right_rounded),
+                          leading: Icon(MyAppIcons.bag),
+                        ),
+                      ),
+                    ),
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: userTitle('User Information')),
@@ -159,10 +205,11 @@ class _UserInfoState extends State<UserInfo> {
                       thickness: 1,
                       color: Colors.grey,
                     ),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Phone number', '4555', 1, context),
+                    userListTile('Email', _email ?? '', 0, context),
+                    userListTile('Phone number', _phoneNumber.toString() ?? '',
+                        1, context),
                     userListTile('Shipping address', '', 2, context),
-                    userListTile('joined date', 'date', 3, context),
+                    userListTile('joined date', _joinedAt ?? '', 3, context),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: userTitle('User settings'),
@@ -221,9 +268,14 @@ class _UserInfoState extends State<UserInfo> {
                                           child: Text('Cancel')),
                                       TextButton(
                                           onPressed: () async {
-                                            await _auth.signOut().then((value) => Navigator.pop(context));
+                                            await _auth.signOut().then(
+                                                (value) =>
+                                                    Navigator.pop(context));
                                           },
-                                          child: Text('Ok', style: TextStyle(color: Colors.red),))
+                                          child: Text(
+                                            'Ok',
+                                            style: TextStyle(color: Colors.red),
+                                          ))
                                     ],
                                   );
                                 });

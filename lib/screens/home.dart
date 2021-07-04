@@ -1,5 +1,6 @@
 import 'package:ECommerceApp/consts/colors.dart';
 import 'package:ECommerceApp/inner_screens/brands_navigation_rail.dart';
+import 'package:ECommerceApp/provider/orders_provider.dart';
 import 'package:ECommerceApp/provider/products.dart';
 import 'package:ECommerceApp/screens/feeds.dart';
 import 'package:ECommerceApp/widget/backlayer.dart';
@@ -38,6 +39,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
+    // productsData.fetchProducts();
+
     final popularItems = productsData.popularProducts;
     print('popularItems length ${popularItems.length}');
     return Scaffold(
@@ -190,7 +193,8 @@ class _HomeState extends State<Home> {
                     Spacer(),
                     FlatButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(Feeds.routeName, arguments: 'popular');
+                        Navigator.of(context)
+                            .pushNamed(Feeds.routeName, arguments: 'popular');
                       },
                       child: Text(
                         'View all...',

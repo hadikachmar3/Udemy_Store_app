@@ -39,10 +39,7 @@ class _FeedProductsState extends State<FeedProducts> {
                         borderRadius: BorderRadius.circular(2),
                         child: Container(
                           width: double.infinity,
-                          constraints: BoxConstraints(
-                              minHeight: 100,
-                              maxHeight:
-                                  MediaQuery.of(context).size.height * 0.3),
+                          height: MediaQuery.of(context).size.height * 0.3,
                           child: Image.network(
                             productsAttributes.imageUrl,
                             //   fit: BoxFit.fitWidth,

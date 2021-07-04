@@ -5,8 +5,8 @@ import 'package:ECommerceApp/provider/cart_provider.dart';
 import 'package:ECommerceApp/provider/dark_theme_provider.dart';
 import 'package:ECommerceApp/provider/favs_provider.dart';
 import 'package:ECommerceApp/provider/products.dart';
-import 'package:ECommerceApp/screens/cart.dart';
-import 'package:ECommerceApp/screens/wishlist.dart';
+import 'package:ECommerceApp/screens/cart/cart.dart';
+import 'package:ECommerceApp/screens/wishlist/wishlist.dart';
 import 'package:ECommerceApp/widget/feeds_products.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
@@ -237,7 +237,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   width: double.infinity,
                   height: 340,
                   child: ListView.builder(
-                    itemCount: 7,
+                    itemCount:
+                        productsList.length < 7 ? productsList.length : 7,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext ctx, int index) {
                       return ChangeNotifierProvider.value(

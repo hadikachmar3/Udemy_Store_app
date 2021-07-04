@@ -1,7 +1,7 @@
 import 'package:ECommerceApp/consts/colors.dart';
 import 'package:ECommerceApp/consts/my_icons.dart';
-import 'package:ECommerceApp/inner_screens/upload_product_form.dart';
-import 'package:ECommerceApp/screens/cart.dart';
+import 'package:ECommerceApp/screens/upload_product_form.dart';
+import 'package:ECommerceApp/screens/cart/cart.dart';
 import 'package:ECommerceApp/screens/feeds.dart';
 import 'package:flutter/material.dart';
 

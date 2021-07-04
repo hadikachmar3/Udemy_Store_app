@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_text_secondary_default">#e1e1e1</color>
+    <color name="color_text_unselected_primary_default">#e1e1e1</color>
+    <color name="color_text_unselected_secondary_default">#a5a5a5</color>
+    <color name="control_normal_color_default">#e1e1e1</color>
+    <color name="stripe_3ds2_accent">#5a5a5a</color>
+    <color name="stripe_3ds2_background">#303030</color>
+    <color name="stripe_3ds2_control_activated">#c1c1c1</color>
+    <color name="stripe_3ds2_divider">#a5a5a5</color>
+    <color name="stripe_3ds2_primary">#1f1f1f</color>
+    <color name="stripe_3ds2_primary_dark">#000000</color>
+    <color name="stripe_3ds2_text_color">#e1e1e1</color>
+    <color name="stripe_3ds2_text_color_primary">@android:color/white</color>
+    <color name="stripe_3ds2_text_edit">@color/stripe_3ds2_text_color</color>
+    <color name="stripe_3ds2_text_info_toggled">#a1a1a1</color>
+    <color name="stripe_3ds2_text_input_fill">#353535</color>
+    <color name="stripe_3ds2_text_input_hint">#7a7a7a</color>
+    <color name="toolbar_color_default">#1f1f1f</color>
+    <color name="toolbar_color_default_dark">#000000</color>
+    <style name="BaseStripe3DS2Theme" parent="Theme.MaterialComponents">
+        <item name="actionBarStyle">@style/Stripe3DS2ActionBarStyle</item>
+        <item name="android:actionBarStyle">@style/Stripe3DS2ActionBarStyle</item>
+        <item name="toolbarStyle">@style/Stripe3DS2ToolbarStyle</item>
+        <item name="android:colorBackground">@color/stripe_3ds2_background</item>
+        <item name="colorPrimary">@color/stripe_3ds2_primary</item>
+        <item name="colorPrimaryDark">@color/stripe_3ds2_primary_dark</item>
+        <item name="colorAccent">@color/stripe_3ds2_accent</item>
+        <item name="colorControlActivated">@color/stripe_3ds2_control_activated</item>
+        <item name="android:textColor">@color/stripe_3ds2_text_color</item>
+        <item name="android:textColorPrimary">@color/stripe_3ds2_text_color_primary</item>
+        <item name="android:editTextColor">@color/stripe_3ds2_text_edit</item>
+        <item name="stripe3DS2EditTextBackgroundColor">@color/stripe_3ds2_text_input_fill</item>
+    </style>
+    <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.Dialog" parent="Theme.AppCompat.Dialog"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.MinWidth" parent="Theme.AppCompat.Dialog.MinWidth"/>
+    <style name="Theme.AppCompat.DayNight.DialogWhenLarge" parent="Theme.AppCompat.DialogWhenLarge"/>
+    <style name="Theme.AppCompat.DayNight.NoActionBar" parent="Theme.AppCompat.NoActionBar"/>
+</resources>

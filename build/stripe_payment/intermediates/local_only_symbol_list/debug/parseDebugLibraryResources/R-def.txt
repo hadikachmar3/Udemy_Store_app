@@ -1,0 +1,10 @@
+R_DEF: Internal format may change without notice
+local
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
+id buttonSave
+id card_input_widget
+id progress
+layout activity_stripe
+style AppTheme

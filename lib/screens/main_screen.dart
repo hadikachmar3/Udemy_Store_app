@@ -1,5 +1,4 @@
-import 'package:ECommerceApp/inner_screens/upload_product_form.dart';
-import 'package:ECommerceApp/screens/landing_page.dart';
+import 'package:ECommerceApp/screens/upload_product_form.dart';
 import 'package:flutter/material.dart';
 
 import 'bottom_bar.dart';

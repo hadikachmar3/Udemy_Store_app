@@ -1,0 +1,62 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="de.jonasbark.stripepayment"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml
+10
+11    <application android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+11-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:5:5-30:19
+11-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:6:9-65
+12        <meta-data
+12-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:8:9-10:36
+13            android:name="com.google.android.gms.wallet.api.enabled"
+13-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:9:13-69
+14            android:value="true" />
+14-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:10:13-33
+15
+16        <activity
+16-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:12:9-16:75
+17            android:name="com.gettipsi.stripe.OpenBrowserActivity"
+17-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:13:13-67
+18            android:exported="false"
+18-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:14:13-37
+19            android:launchMode="singleTask"
+19-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:15:13-44
+20            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+20-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:16:13-72
+21        <activity
+21-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:17:9-29:20
+22            android:name="com.gettipsi.stripe.RedirectUriReceiver"
+22-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:20:13-67
+23            android:exported="true"
+23-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:18:13-36
+24            android:launchMode="singleTask"
+24-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:19:13-44
+25            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+25-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:21:13-83
+26            <intent-filter>
+26-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:22:13-28:29
+27                <action android:name="android.intent.action.VIEW" />
+27-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:23:17-69
+27-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:23:25-66
+28
+29                <category android:name="android.intent.category.DEFAULT" />
+29-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:24:17-76
+29-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:24:27-73
+30                <category android:name="android.intent.category.BROWSABLE" />
+30-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:25:17-78
+30-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:25:27-75
+31
+32                <data android:scheme="example" />
+32-->C:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_payment-1.1.1\android\src\main\AndroidManifest.xml:27:23-68
+33            </intent-filter>
+34        </activity>
+35    </application>
+36
+37</manifest>

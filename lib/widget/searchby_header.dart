@@ -1,9 +1,9 @@
 import 'package:ECommerceApp/consts/colors.dart';
 import 'package:ECommerceApp/provider/cart_provider.dart';
 import 'package:ECommerceApp/provider/favs_provider.dart';
-import 'package:ECommerceApp/screens/cart.dart';
+import 'package:ECommerceApp/screens/cart/cart.dart';
 import 'package:ECommerceApp/screens/user_info.dart';
-import 'package:ECommerceApp/screens/wishlist.dart';
+import 'package:ECommerceApp/screens/wishlist/wishlist.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

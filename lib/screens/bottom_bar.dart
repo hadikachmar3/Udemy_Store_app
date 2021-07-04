@@ -3,7 +3,7 @@ import 'package:ECommerceApp/screens/search.dart';
 import 'package:ECommerceApp/screens/user_info.dart';
 import 'package:flutter/material.dart';
 
-import 'cart.dart';
+import 'cart/cart.dart';
 import 'feeds.dart';
 import 'home.dart';
 
@@ -14,28 +14,35 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  List<Map<String, Object>> _pages;
+  // List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
-
+  List<Object> pages;
   @override
   void initState() {
-    _pages = [
-      {
-        'page': Home(),
-      },
-      {
-        'page': Feeds(),
-      },
-      {
-        'page': Search(),
-      },
-      {
-        'page': CartScreen(),
-      },
-      {
-        'page': UserInfo(),
-      },
+    pages = [
+      Home(),
+      Feeds(),
+      Search(),
+      CartScreen(),
+      UserInfo(),
     ];
+    // _pages = [
+    //   {
+    //     'page': Home(),
+    //   },
+    //   {
+    //     'page': Feeds(),
+    //   },
+    //   {
+    //     'page': Search(),
+    //   },
+    //   {
+    //     'page': CartScreen(),
+    //   },
+    //   {
+    //     'page': UserInfo(),
+    //   },
+    // ];
     super.initState();
   }
 
@@ -48,7 +55,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedPageIndex]['page'],
+      body: pages[_selectedPageIndex], //_pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomAppBar(
         // color: Colors.white,
         shape: CircularNotchedRectangle(),
@@ -72,30 +79,24 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               unselectedItemColor: Theme.of(context).textSelectionColor,
               selectedItemColor: Colors.purple,
               currentIndex: _selectedPageIndex,
+              // selectedLabelStyle: TextStyle(fontSize: 16),
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(MyAppIcons.home),
-                  title: Text('Home'),
+                  // title: Text('Home'),
+                  label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(MyAppIcons.rss),
-                  title: Text('Feeds'),
-                ),
+                    icon: Icon(MyAppIcons.rss), label: 'Feeds'),
                 BottomNavigationBarItem(
-                  activeIcon: null,
-                  icon: Icon(null),
-                  title: Text('Search'),
-                ),
+                    activeIcon: null, icon: Icon(null), label: 'Search'),
                 BottomNavigationBarItem(
-                  icon: Icon(
-                    MyAppIcons.bag,
-                  ),
-                  title: Text('Cart'),
-                ),
+                    icon: Icon(
+                      MyAppIcons.bag,
+                    ),
+                    label: 'Cart'),
                 BottomNavigationBarItem(
-                  icon: Icon(MyAppIcons.user),
-                  title: Text('User'),
-                ),
+                    icon: Icon(MyAppIcons.user), label: 'User'),
               ],
             ),
           ),

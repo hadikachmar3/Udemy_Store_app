@@ -1,9 +1,16 @@
 # This is a generated file; do not edit or check into version control.
+cloud_firestore=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-2.2.0\\
+cloud_firestore_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore_web-2.1.0\\
 firebase_auth=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-1.1.4\\
 firebase_auth_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-1.1.2\\
-firebase_core=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.1.1\\
-firebase_core_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.0.3\\
+firebase_core=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.2.0\\
+firebase_core_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.1.0\\
+firebase_storage=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_storage-8.1.0\\
+firebase_storage_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_storage_web-1.1.0\\
 flutter_plugin_android_lifecycle=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-2.0.1\\
+fluttertoast=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-8.0.7\\
+google_sign_in=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_sign_in-5.0.3\\
+google_sign_in_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_sign_in_web-0.10.0\\
 image_picker=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.7.4\\
 image_picker_for_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker_for_web-2.0.0\\
 path_provider=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.1\\
@@ -16,3 +23,4 @@ shared_preferences_macos=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.
 shared_preferences_web=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_web-2.0.0\\
 shared_preferences_windows=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_windows-2.0.0\\
 sqflite=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-2.0.0+3\\
+stripe_payment=C:\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\stripe_payment-1.1.1\\

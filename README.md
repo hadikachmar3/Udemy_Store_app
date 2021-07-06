@@ -10,10 +10,9 @@ Shop App made by Flutter
 [![Udemy course](https://www.pipelinersales.com/wp-content/uploads/2019/06/large-udemy.jpg)](https://www.udemy.com/course/flutter-with-firebase-build-an-e-commerce-app-from-scratch/#reviews "Udemy course - Click to View!")
 
 
-## Mockup
-![1623095029642](https://user-images.githubusercontent.com/38382273/121786767-b676bf80-cbca-11eb-8ebb-604d79d6af84.png)
+## Mockup and download it from google playstore
 
-
+[![download it from google playstore](https://user-images.githubusercontent.com/38382273/121786767-b676bf80-cbca-11eb-8ebb-604d79d6af84.png)](https://play.google.com/store/apps/details?id=com.hadik3n.shop_app&hl=en&gl=US "download it from google playstore - Click to View!")
 
 
 

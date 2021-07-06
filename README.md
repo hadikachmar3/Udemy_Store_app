@@ -19,6 +19,9 @@ Shop App made by Flutter
 
 [![Starter project to clone](https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png)](https://github.com/hadikachmar3/Udemy_Store_app_start/tree/master "Starter project to clone - Click to View!")
 
+[![Flutter helper kit](https://user-images.githubusercontent.com/38382273/124526334-29aad480-de0b-11eb-904b-0df84fa4c124.png)](https://play.google.com/store/apps/details?id=com.hadik.flutterer&hl=en&gl=US "Flutter helper kit - Click to View!")
+
+
 
 
 

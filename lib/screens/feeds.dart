@@ -20,14 +20,17 @@ class Feeds extends StatefulWidget {
 }
 
 class _FeedsState extends State<Feeds> {
-  Future<void> _getProducts() async {
-    Provider.of<Products>(context, listen: false).fetchProducts();
+  Future<void> _getProductsOnRefresh() async {
+    await Provider.of<Products>(context, listen: false).fetchProducts();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final popular = ModalRoute.of(context).settings.arguments as String;
-    final productsProvider = Provider.of<Products>(context);
+    final productsProvider = Provider.of<Products>(
+      context,
+    );
 
     List<Product> productsList = productsProvider.products;
     if (popular == 'popular') {
@@ -83,9 +86,7 @@ class _FeedsState extends State<Feeds> {
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: () async {
-           _getProducts().then((value) => setState(() {}));
-        },
+        onRefresh: _getProductsOnRefresh,
         child: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: 240 / 420,
@@ -99,6 +100,7 @@ class _FeedsState extends State<Feeds> {
           }),
         ),
       ),
+
 //         StaggeredGridView.countBuilder(
 //           padding: ,
 //   crossAxisCount: 6,

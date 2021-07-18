@@ -70,13 +70,15 @@ class _UserInfoState extends State<UserInfo> {
             controller: _scrollController,
             slivers: <Widget>[
               SliverAppBar(
-                automaticallyImplyLeading: false,
-                elevation: 4,
+                // leading: Icon(Icons.ac_unit_outlined),
+                // automaticallyImplyLeading: false,
+                elevation: 0,
                 expandedHeight: 200,
                 pinned: true,
                 flexibleSpace: LayoutBuilder(builder:
                     (BuildContext context, BoxConstraints constraints) {
                   top = constraints.biggest.height;
+
                   return Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -90,51 +92,45 @@ class _UserInfoState extends State<UserInfo> {
                           tileMode: TileMode.clamp),
                     ),
                     child: FlexibleSpaceBar(
-                      collapseMode: CollapseMode.parallax,
+                      // collapseMode: CollapseMode.parallax,
                       centerTitle: true,
-                      title: Row(
-                        //  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          AnimatedOpacity(
-                            duration: Duration(milliseconds: 300),
-                            opacity: top <= 110.0 ? 1.0 : 0,
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                Container(
-                                  height: kToolbarHeight / 1.8,
-                                  width: kToolbarHeight / 1.8,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.white,
-                                        blurRadius: 1.0,
-                                      ),
-                                    ],
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(_userImageUrl ??
-                                          'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                Text(
-                                  // 'top.toString()',
-                                  _name == null ? 'Guest' : _name,
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: Colors.white),
-                                ),
-                              ],
+                      title: AnimatedOpacity(
+                        duration: Duration(milliseconds: 300),
+                        opacity: top <= 110.0 ? 1.0 : 0,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 12,
                             ),
-                          ),
-                        ],
+                            Container(
+                              height: kToolbarHeight / 1.8,
+                              width: kToolbarHeight / 1.8,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white,
+                                    blurRadius: 1.0,
+                                  ),
+                                ],
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(_userImageUrl ??
+                                      'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              // 'top.toString()',
+                              _name == null ? 'Guest' : _name,
+                              style: TextStyle(
+                                  fontSize: 20.0, color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                       background: Image(
                         image: NetworkImage(_userImageUrl ??
@@ -152,7 +148,7 @@ class _UserInfoState extends State<UserInfo> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0),
-                        child: userTitle('User Bag')),
+                        child: userTitle(title: 'User Bag')),
                     Divider(
                       thickness: 1,
                       color: Colors.grey,
@@ -160,47 +156,35 @@ class _UserInfoState extends State<UserInfo> {
                     Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        splashColor: Theme.of(context).splashColor,
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(WishlistScreen.routeName),
+                        splashColor: Colors.red,
                         child: ListTile(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(WishlistScreen.routeName),
                           title: Text('Wishlist'),
                           trailing: Icon(Icons.chevron_right_rounded),
                           leading: Icon(MyAppIcons.wishlist),
                         ),
                       ),
                     ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        splashColor: Theme.of(context).splashColor,
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(CartScreen.routeName);
-                          },
-                          title: Text('Cart'),
-                          trailing: Icon(Icons.chevron_right_rounded),
-                          leading: Icon(MyAppIcons.cart),
-                        ),
-                      ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(CartScreen.routeName);
+                      },
+                      title: Text('Cart'),
+                      trailing: Icon(Icons.chevron_right_rounded),
+                      leading: Icon(MyAppIcons.cart),
                     ),
-                     Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        splashColor: Theme.of(context).splashColor,
-                        child: ListTile(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(OrderScreen.routeName),
-                          title: Text('My Orders'),
-                          trailing: Icon(Icons.chevron_right_rounded),
-                          leading: Icon(MyAppIcons.bag),
-                        ),
-                      ),
+                    ListTile(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(OrderScreen.routeName),
+                      title: Text('My Orders'),
+                      trailing: Icon(Icons.chevron_right_rounded),
+                      leading: Icon(MyAppIcons.bag),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: userTitle('User Information')),
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: userTitle(title: 'User Information'),
+                    ),
                     Divider(
                       thickness: 1,
                       color: Colors.grey,
@@ -212,7 +196,7 @@ class _UserInfoState extends State<UserInfo> {
                     userListTile('joined date', _joinedAt ?? '', 3, context),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: userTitle('User settings'),
+                      child: userTitle(title: 'User settings'),
                     ),
                     Divider(
                       thickness: 1,
@@ -311,9 +295,11 @@ class _UserInfoState extends State<UserInfo> {
       top -= offset;
       if (offset < defaultTopMargin - scaleStart) {
         //offset small => don't scale down
+
         scale = 1.0;
       } else if (offset < defaultTopMargin - scaleEnd) {
         //offset between scaleStart and scaleEnd => scale down
+
         scale = (defaultTopMargin - scaleEnd - offset) / scaleEnd;
       } else {
         //offset passed scaleEnd => hide fab
@@ -347,21 +333,14 @@ class _UserInfoState extends State<UserInfo> {
 
   Widget userListTile(
       String title, String subTitle, int index, BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        splashColor: Theme.of(context).splashColor,
-        child: ListTile(
-          onTap: () {},
-          title: Text(title),
-          subtitle: Text(subTitle),
-          leading: Icon(_userTileIcons[index]),
-        ),
-      ),
+    return ListTile(
+      title: Text(title),
+      subtitle: Text(subTitle),
+      leading: Icon(_userTileIcons[index]),
     );
   }
 
-  Widget userTitle(String title) {
+  Widget userTitle({String title}) {
     return Padding(
       padding: const EdgeInsets.all(14.0),
       child: Text(

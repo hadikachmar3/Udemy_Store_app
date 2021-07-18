@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
-    // productsData.fetchProducts();
+    productsData.fetchProducts();
 
     final popularItems = productsData.popularProducts;
     print('popularItems length ${popularItems.length}');
